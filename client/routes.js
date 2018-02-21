@@ -17,28 +17,43 @@ import { Navbar } from "./components"
 //            ${-negQuarterY}px ${negThirdY}px 0 rgba(200, 255, 200, 0.7)`
 // }
 
-const hue = degree => `hue-rotate(${degree}deg)`
+const hue = degree => `hue-rotate(${degree}deg)`,
+  brightness = percent => `brightness(${percent}%)`,
+  translateY = amount => `translate3d(0, ${amount}px, 0)`
 
 class Routes extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      negHalfY: 0
+      y: 0,
+      negHalfY: 0,
+      negQuarterY: 0,
+      active: "active"
     }
   }
 
   componentDidMount() {
     window.addEventListener("scroll", () => {
       const y = window.scrollY,
-        negHalfY = -y / 2
-      this.setState({ negHalfY })
+        negHalfY = -y / 2,
+        negQuarterY = -y / 4,
+        active = y > 70 ? "inactive" : "active"
+
+      this.setState({ y, negHalfY, negQuarterY, active })
     })
   }
   render() {
+    const { negHalfY, negQuarterY, y } = this.state
     return (
       <div>
-        <Navbar />
-        <div id="headshot" style={{ filter: hue(this.state.negHalfY) }} />
+        <Navbar active={this.state.active} />
+        <div
+          id="headshot"
+          style={{
+            filter: hue(negHalfY) + brightness(y > 0 ? 100 + y : 100),
+            transform: translateY(negQuarterY)
+          }}
+        />
       </div>
     )
   }
