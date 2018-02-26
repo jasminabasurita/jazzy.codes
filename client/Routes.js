@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Route } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 import { Navbar, About, Projects } from "./components"
 
 class Routes extends Component {
@@ -28,12 +28,14 @@ class Routes extends Component {
     return (
       <div>
         <Navbar active={this.state.active} />
-        <Route
-          exact
-          path="/"
-          render={routeProps => <About {...routeProps} {...this.state} />}
-        />
-        <Route path="/projects" component={Projects} />
+        <Switch>
+          <Route
+            path="/about"
+            render={routeProps => <About {...routeProps} {...this.state} />}
+          />
+          <Route path="/projects" component={Projects} />
+          <Redirect to="/about" />
+        </Switch>
       </div>
     )
   }
