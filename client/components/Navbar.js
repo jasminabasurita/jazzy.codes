@@ -25,6 +25,11 @@ const Navbar = props => (
           <h3>Articles</h3>
         </button>
       </NavLink>
+      <a href="/Jasmina_Jacquelina.pdf">
+        <button>
+          <h3>Resume</h3>
+        </button>
+      </a>
     </div>
   </nav>
 )

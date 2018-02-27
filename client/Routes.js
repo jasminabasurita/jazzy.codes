@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
-import { Navbar, About, Projects } from "./components"
+import { Navbar, About, Projects, Presentations, Articles } from "./components"
 
 class Routes extends Component {
   constructor(props) {
@@ -34,6 +34,8 @@ class Routes extends Component {
             render={routeProps => <About {...routeProps} {...this.state} />}
           />
           <Route path="/projects" component={Projects} />
+          <Route path="/presentations" component={Presentations} />
+          <Route path="/articles" component={Articles} />
           <Redirect to="/about" />
         </Switch>
       </div>
