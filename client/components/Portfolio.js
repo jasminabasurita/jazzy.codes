@@ -9,14 +9,18 @@ const Portfolio = props => (
           className="portfolio-item"
           key={item.id}
           style={{
-            background: `url(${item.imageUrl}) no-repeat`
+            background: `url(${item.imageUrl}) no-repeat`,
+            backgroundSize: "cover",
+            backgroundPosition: "center"
           }}
         >
           <div className="item-overlay">
             <h2>{item.name}</h2>
             <p>{item.description}</p>
-            <a href={item.repo}>GitHub Repo</a>
-            <a href={item.deploy}>Deployed Link</a>
+            {item.repo && <a href={item.repo}>GitHub Repo</a>}
+            {item.deploy && <a href={item.deploy}>Deployed Link</a>}
+            {item.videoUrl && <a href={item.videoUrl}>Video Link</a>}
+            {item.articleUrl && <a href={item.articleUrl}>Article Link</a>}
           </div>
         </div>
       ))}
