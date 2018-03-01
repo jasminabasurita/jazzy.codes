@@ -11,6 +11,7 @@ const defaultState = {
 
 //Action Types
 const GOT_PROJECTS = "GOT_PROJECTS",
+  GOT_ABOUT_ME = "GOT_ABOUT_ME",
   GOT_PRESENTATIONS = "GOT_PRESENTATIONS",
   GOT_ARTICLES = "GOT_ARTICLES"
 
@@ -18,6 +19,10 @@ const GOT_PROJECTS = "GOT_PROJECTS",
 const gotProjects = projects => ({
     type: GOT_PROJECTS,
     projects
+  }),
+  gotAboutMe = aboutMe => ({
+    type: GOT_ABOUT_ME,
+    aboutMe
   }),
   gotPresentations = presentations => ({
     type: GOT_PRESENTATIONS,
@@ -31,12 +36,14 @@ const gotProjects = projects => ({
 export const fetchAllData = () => dispatch => {
   Promise.all([
     axios.get("/JSON/projects.json"),
+    axios.get("/README.md"),
     axios.get("/JSON/presentations.json"),
     axios.get("/JSON/articles.json")
   ]).then(responses => {
     dispatch(gotProjects(responses[0].data))
-    dispatch(gotPresentations(responses[1].data))
-    dispatch(gotArticles(responses[2].data))
+    dispatch(gotAboutMe(responses[1].data))
+    dispatch(gotPresentations(responses[2].data))
+    dispatch(gotArticles(responses[3].data))
   })
 }
 
@@ -44,6 +51,8 @@ const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case GOT_PROJECTS:
       return Object.assign({}, state, { projects: action.projects })
+    case GOT_ABOUT_ME:
+      return Object.assign({}, state, { aboutMe: action.aboutMe })
     case GOT_PRESENTATIONS:
       return Object.assign({}, state, { presentations: action.presentations })
     case GOT_ARTICLES:
