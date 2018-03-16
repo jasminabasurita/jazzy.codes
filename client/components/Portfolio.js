@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 const Portfolio = props => (
   <div id="portfolio">
-    {props.items.length &&
+    {!!props.items.length &&
       props.items.map(item => (
         <div
           className="portfolio-item"
