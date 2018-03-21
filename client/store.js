@@ -35,10 +35,10 @@ const gotProjects = projects => ({
 //Thunk Creators
 export const fetchAllData = () => dispatch => {
   Promise.all([
-    axios.get("/JSON/projects.json"),
+    axios.get("/api/projects.json"),
     axios.get("/README.md"),
-    axios.get("/JSON/presentations.json"),
-    axios.get("/JSON/articles.json")
+    axios.get("/api/presentations.json"),
+    axios.get("/api/articles.json")
   ]).then(responses => {
     dispatch(gotProjects(responses[0].data))
     dispatch(gotAboutMe(responses[1].data))
