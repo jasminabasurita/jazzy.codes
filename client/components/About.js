@@ -26,19 +26,13 @@ const About = props => {
         >
           <div id="profiles">
             <a href="https://github.com/jasminabasurita">
-              <h1>
-                <i className="fab fa-github" />
-              </h1>
+              <img src="/icons/github.svg" />
             </a>
             <a href="https://linkedin.com/in/jasmina-jacquelina">
-              <h1>
-                <i className="fab fa-linkedin" />
-              </h1>
+              <img src="/icons/linkedin.svg" />
             </a>
             <a href="mailto:jasminejacquelin@gmail.com">
-              <h1>
-                <i className="fas fa-envelope" />
-              </h1>
+              <img src="/icons/mail.svg" />
             </a>
           </div>
         </div>

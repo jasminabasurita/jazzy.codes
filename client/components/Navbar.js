@@ -27,7 +27,7 @@ class Navbar extends Component {
         <h2>Jazzy.Codes</h2>
         <div className={this.state.menuClick}>
           <button id="menu-bars" onClick={this.handleMenu}>
-            <i className="fas fa-bars" />
+            <img src="/icons/hamburger.svg" />
           </button>
           <NavLink
             to="/about"
